@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: 192.168.1.22
+  username: test
+  password: test
+
+development:
+  <<: *default
+  database: testing_system_development
+
+test:
+  <<: *default
+  database: testing_system_test
+
+production:
+  <<: *default
+  database: testing_system_production
+  username: testing_system
+  password: <%= ENV['TESTING_SYSTEM_DATABASE_PASSWORD'] %>

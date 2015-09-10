@@ -1,0 +1,6 @@
+= simple_form_for(:user, as: :user, url: session_path(:user), html: { class: 'navbar-form navbar-right' }) do |f|
+  .form-group
+    = f.input :email, required: true, autofocus: true, class: 'form-control', placeholder: 'user@example.com' , label: false
+  .form-group
+    = f.input :password, required: true, class: 'form-control', placeholder: 'password', label: false
+  = f.button :submit, 'Log in', class: 'btn btn-success'
