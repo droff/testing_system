@@ -8,14 +8,17 @@ default: &default
 
 development:
   <<: *default
-  database: testing_system_development
+  database: testing_system_dev
 
-test:
+test: &test
   <<: *default
   database: testing_system_test
 
 production:
   <<: *default
-  database: testing_system_production
+  database: testing_system
   username: testing_system
   password: <%= ENV['TESTING_SYSTEM_DATABASE_PASSWORD'] %>
+
+cucumber:
+  <<: *test

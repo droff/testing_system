@@ -1,0 +1,8 @@
+#form_type
+  - case @question.qtype
+  - when 'textInput'
+    = render partial: 'questions/form_types/text', locals: { f: f }
+  - when 'checkboxInput'
+    = render partial: 'questions/form_types/checkbox', locals: { f: f }
+  - else
+    = render partial: 'questions/form_types/radio', locals: { f: f }

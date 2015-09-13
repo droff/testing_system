@@ -1,0 +1,20 @@
+= simple_form_for @question do |f|
+  - @f = f
+  = f.input :title
+  = f.input :score
+  = f.input :qtype, collection: Question::QTYPES, as: :radio_buttons, checked: @question.qtype || 'radioButton'
+  = render partial: 'form_type', locals: { f: @f }
+  = f.button :submit
+
+javascript:
+  $("#question_qtype_radiobutton").click(function() {
+    $("#form_type").html("#{ j render partial: 'questions/form_types/radio', locals: { f: @f } }");
+  });
+  
+  $("#question_qtype_textinput").click(function() {
+    $("#form_type").html("#{ j render partial: 'questions/form_types/text', locals: { f: @f } }");
+  });
+  
+  $("#question_qtype_checkboxinput").click(function() {
+    $("#form_type").html("#{ j render partial: 'questions/form_types/checkbox', locals: { f: @f } }");
+  });

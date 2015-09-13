@@ -1,0 +1,13 @@
+p = link_to 'New Question', new_question_path
+table.table.table-stripped
+  tbody
+    - @questions.each_with_index do |question, i|
+      tr
+        td= i + 1
+        td= question.title
+        td= question.score
+        td= question.qtype
+        td= link_to 'show', question
+        td= link_to 'edit', edit_question_path(question)
+        td= link_to 'delete', question, method: :delete, data: { confirm: 'Delete this question?' }
+  

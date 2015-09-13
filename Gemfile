@@ -15,6 +15,7 @@ gem 'slim-rails'
 gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
+gem 'active_model_serializers'
 
 group :development do
   gem 'byebug'
@@ -26,7 +27,9 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
+  gem 'capybara'
+  gem 'selenium-webdriver'
   gem 'factory_girl_rails'
-  gem 'database_cleaner', require: false
+  gem 'database_cleaner'
 end

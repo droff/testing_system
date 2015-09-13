@@ -1,0 +1,8 @@
+label Answers
+= f.simple_fields_for :answers, @question.simple_answers do |answ|
+  = answ.input :a
+  = answ.input :b
+  = answ.input :c
+  = answ.input :d
+  
+= f.input :correct_answers, as: :check_boxes, collection: %w(a b c d), checked: @question.correct_answers

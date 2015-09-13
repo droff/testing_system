@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910083810) do
+ActiveRecord::Schema.define(version: 20150910090518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "hstore"
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "title"
+    t.integer  "score",                     default: 0
+    t.string   "qtype",                                 null: false
+    t.hstore   "answers"
+    t.string   "correct_answers",                                    array: true
+    t.integer  "checksum",        limit: 8,             null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  add_index "questions", ["checksum"], name: "index_questions_on_checksum", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
