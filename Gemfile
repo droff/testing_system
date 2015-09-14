@@ -16,6 +16,7 @@ gem 'devise'
 gem 'twitter-bootstrap-rails'
 gem 'simple_form'
 gem 'active_model_serializers'
+gem 'angularjs-rails'
 
 group :development do
   gem 'byebug'

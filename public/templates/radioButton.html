@@ -1,0 +1,5 @@
+<p>{{ r.question }}</p>
+<div ng-repeat="answ in r.answers">
+  <input type="radio" name="answers[{{r.checksum}}]" value={{answ.option}}> {{answ.value}}
+  <br>
+</div>

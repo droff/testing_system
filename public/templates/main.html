@@ -1,0 +1,7 @@
+<form class="form-horizontal"  ng-submit="send()" name="qForm">
+  <div ng-repeat="r in questions">
+    <div ng-include src="'templates/' + r.type + '.html'"></div>
+    <hr/>
+  </div>
+  <button class="btn btn-default" type="submit" ng-click="submitted=true">Send</button>
+</form>
