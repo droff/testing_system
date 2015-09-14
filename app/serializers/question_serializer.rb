@@ -10,6 +10,8 @@ class QuestionSerializer < ActiveModel::Serializer
   end
 
   def answers
-    object.answers.map { |k, v| { option: k.capitalize, value: v } }
+    unless object.answers.nil?
+      object.answers.map { |k, v| { option: k.capitalize, value: v } }
+    end
   end
 end

@@ -24,7 +24,6 @@ describe Api::V1::QuestionsController, type: :controller do
   describe 'POST api/v1/questions' do
     it 'post answer' do
       post :create, json: [ @answer_radio ]
-      p parsed_response
       expect(response.status).to eq 200
     end
 
