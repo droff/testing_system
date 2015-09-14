@@ -2,23 +2,23 @@ require 'spec_helper'
 
 class Klass
   include NumGenerator
+
+  def self.random_string
+    (0...rand(1..128)).map { ('a'..'z').to_a[rand(26)] }.join
+  end
 end
 
 describe Klass do
   describe 'generate_checksum' do
-    subject { Klass.generate_number }
+    subject { Klass.generate_number(Klass.random_string) }
 
     it 'will integer' do
       expect(subject).to be_a Fixnum
     end
 
-    it 'has 10 digits size' do
-      expect(subject.to_s.size).to eq 10
-    end
-
     it 'be uniq' do
-      count = 10
-      nums = count.times.map { Question.generate_number }
+      count = 100
+      nums = count.times.map { Klass.generate_number(Klass.random_string) }
       expect(nums.uniq.size).to eq count
     end
 

@@ -16,7 +16,7 @@ class Question < ActiveRecord::Base
   private
 
   def generate_checksum
-    self.checksum = Question.generate_number
+    self.checksum = Question.generate_number(self.title)
   end
 
   def not_text_input?

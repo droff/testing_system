@@ -10,8 +10,18 @@ class QuestionSerializer < ActiveModel::Serializer
   end
 
   def answers
-    unless object.answers.nil?
-      object.answers.map { |k, v| { option: k.capitalize, value: v } }
+    make_answers_hash unless object.answers.nil?
+  end
+
+  private
+
+  def make_answers_hash
+    object.answers.map do |k, v|
+      {
+        option: k.capitalize,
+        value: v,
+        correct: object.correct_answers.include?(k)
+      }
     end
   end
 end

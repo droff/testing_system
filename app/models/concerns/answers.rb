@@ -21,15 +21,11 @@ module Answers
     when 'textInput'
       self.correct_answers == user_answer
     when 'checkboxInput'
-      self.correct_answers == user_answer.first.keys
+      self.correct_answers == user_answer.map(&:keys).flatten
     else
       false
     end
   end
-
-  #def get_array_from_correct_answers
-  #  self.answers.select { |e| self.correct_answers.include?(e['option']) }
-  #end
 
   module ClassMethods
     def get_answers(params)
