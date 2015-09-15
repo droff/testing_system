@@ -9,16 +9,6 @@ module AttributeParams
 
   private
 
-  #def params_nil?
-  #  params[:question][:answers].nil? ||
-  #  params[:question][:correct_answers].nil? ||
-  #  params[:question][:answers].values.include?('')
-  #end
-
-  #def answers_param
-  #  params[:question][:answers].map { |k, v| { option: k, value: v } }
-  #end
-
   def correct_answers_params
     [params[:question][:correct_answers]].flatten.delete_if(&:empty?)
   end

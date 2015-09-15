@@ -1,5 +1,4 @@
-<p>{{ r.question }}</p>
-<div ng-repeat="answ in r.answers">
-  <input type="checkbox" name=answers[{{r.checksum}}] value={{answ.option}}> {{answ.value}}
-  <br>
-</div>
+<h5>{{ $index + 1 }}. {{ r.question }}</h5>
+<label class="checkbox-inline" ng-repeat="a in r.answers">
+  <input type="checkbox" value={{ a.option }} ng-model="quiz.answer[r.checksum][a.option]"> {{a.value}}
+</label>

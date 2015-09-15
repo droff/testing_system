@@ -2,9 +2,9 @@ require 'spec_helper'
 
 # user request: { checksum: { value: q_value } }
 # example:
-#   radio     { 1234567890: { value: { 'a' => '1' } } }
-#   text      { 1234567891: { value: '1' } }
-#   checkbox  { 1234567892: { value: [ { 'a' => '1' }, { 'c' => '3' } ] } }
+#   radio     { '1234567890': { 'value': ['a'] } }
+#   text      { '1234567891': { 'value': ['1'] } }
+#   checkbox  { '1234567892': { 'value': ['a', c'] } }
 
 describe Api::V1::QuestionsController, type: :controller do
   before do
@@ -12,10 +12,9 @@ describe Api::V1::QuestionsController, type: :controller do
     @qt = create(:question_text)
     @qc = create(:question_checkbox)
 
-    @answer_radio    = { @qr.checksum => { value: { 'b' => '8' } } }
-    @answer_text     = { @qt.checksum => { value: '15' } }
-    @answer_checkbox = { @qc.checksum => {
-      value: [ { 'a' =>'10' }, { 'b' => '13' } ] } }
+    @answer_radio    = { @qr.checksum.to_s => { 'value' => ['b'] } }
+    @answer_text     = { @qt.checksum.to_s => { 'value' => ['15'] } }
+    @answer_checkbox = { @qc.checksum.to_s => { 'value' => ['a', 'b'] } }
 
     @user_answer_text = { "value" => '15', "correct" => false }
   end

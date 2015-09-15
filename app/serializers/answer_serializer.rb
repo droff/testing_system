@@ -27,11 +27,11 @@ class AnswerSerializer < QuestionSerializer
   def make_option_value_hash(h)
     case object.qtype
     when 'radioButton'
-      [h].flatten[0].map { |k, v| { option: k.capitalize, value: v } }[0]
+      h.flatten.map { |k, v| { option: k.capitalize, value: v } }[0]
     when 'textInput'
-      h
+      h.first
     else
-      h.map { |e| e.map { |k, v| { option: k.capitalize, value: v } } }.flatten
+      h.map { |e| { option: e.capitalize } }.flatten
     end
   end
 end

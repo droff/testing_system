@@ -1,0 +1,15 @@
+<div ng-controller="ResultCtrl">
+  <div ng-repeat="r in result" ng-init="r.user_answer_correct===undefined ? answer = r.user_answer : answer = r.user_answer_correct">
+    <h5>{{ $index + 1 }}. {{ r.question }}</h5>
+    <p>Ваш ответ: {{ answer.option }}
+    <span ng-repeat="v in answer.value" ng-if="typeof(v)===Object">
+      {{ v.option }}
+    </span>
+    <span ng-if="r.type=='textInput'">{{ answer.value }}</span>
+     - {{ answer.correct == true ? 'правильно' : 'не правильно' }}</p>
+    <p>Правильный ответ:
+      <span ng-repeat="ca in r.correct_answers">{{ ca }} </span>
+    </p>
+    <hr/>
+  </div>
+</div>

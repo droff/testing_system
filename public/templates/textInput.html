@@ -1,3 +1,3 @@
-<p>{{ r.question }}</p>
-<input type="text" name=answers[{{r.checksum}}]>
+<h5>{{ $index + 1 }}. {{ r.question }}</h5>
+<input type="text" ng-model="quiz.answer[r.checksum]">
 <br>

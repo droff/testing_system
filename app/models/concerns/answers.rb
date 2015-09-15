@@ -15,16 +15,7 @@ module Answers
   private
 
   def answer_correct?(user_answer)
-    case self.qtype
-    when 'radioButton'
-      self.correct_answers == user_answer.keys
-    when 'textInput'
-      self.correct_answers == user_answer
-    when 'checkboxInput'
-      self.correct_answers == user_answer.map(&:keys).flatten
-    else
-      false
-    end
+    self.correct_answers == user_answer.map(&:downcase)
   end
 
   module ClassMethods
@@ -33,7 +24,7 @@ module Answers
       checksum_ids = params.keys
 
       Question.where(checksum: checksum_ids).map do |question|
-        question.check_answer(params[question.checksum]['value'])
+        question.check_answer(params[question.checksum.to_s]['value'])
       end
     end
   end
